@@ -1,0 +1,12 @@
+#@RestCatalogService.WebApi_HostAddress = http://localhost:5138
+@RestCatalogService.WebApi_HostAddress = http://localhost:80
+
+###  
+# Add a new category
+POST {{RestCatalogService.WebApi_HostAddress}}/api/categories
+Content-Type: application/json
+Accept: application/json
+
+{
+  "name": "My New Category 2"
+}

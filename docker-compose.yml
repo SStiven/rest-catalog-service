@@ -1,0 +1,27 @@
+services:
+  api:
+    build: .
+    ports:
+      - "8080:80"
+    environment:
+      - ASPNETCORE_URLS=http://+:80
+      - ConnectionStrings__RestCatalogServiceSqlServerConnection=Server=sqlserver,1433;Database=RestCatalogService;User Id=sa;Password=ShouldBeStoredInSecretsManagementTool123;Encrypt=False;
+    depends_on:
+      - sqlserver
+    networks:
+      - app-network
+
+  sqlserver:
+    image: mcr.microsoft.com/mssql/server:2022-latest
+    container_name: sqlserver_container
+    environment:
+      - ACCEPT_EULA=Y
+      - SA_PASSWORD=ShouldBeStoredInSecretsManagementTool123
+    ports:
+      - "1433:1433"
+    networks:
+      - app-network
+
+networks:
+  app-network:
+    driver: bridge
