@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using RestCatalogService.WebApi.Persistence.EntityFrameworkCore.Common;
 
@@ -11,9 +12,11 @@ using RestCatalogService.WebApi.Persistence.EntityFrameworkCore.Common;
 namespace RestCatalogService.WebApi.Persistence.EntityFrameworkCore.Migrations
 {
     [DbContext(typeof(RestCatalogServiceDbContext))]
-    partial class RestCatalogServiceDbContextModelSnapshot : ModelSnapshot
+    [Migration("20250609053410_Initial")]
+    partial class Initial
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -41,23 +44,6 @@ namespace RestCatalogService.WebApi.Persistence.EntityFrameworkCore.Migrations
                         .IsUnique();
 
                     b.ToTable("category", (string)null);
-
-                    b.HasData(
-                        new
-                        {
-                            Id = new Guid("11111111-1111-1111-1111-111111111111"),
-                            Name = "Category 1"
-                        },
-                        new
-                        {
-                            Id = new Guid("11111111-1111-1111-1111-111111111112"),
-                            Name = "Category 2"
-                        },
-                        new
-                        {
-                            Id = new Guid("11111111-1111-1111-1111-111111111113"),
-                            Name = "Category 3"
-                        });
                 });
 
             modelBuilder.Entity("RestCatalogService.WebApi.Domain.Item", b =>

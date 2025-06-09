@@ -7,8 +7,11 @@ namespace RestCatalogService.WebApi.Features.Categories.Add;
 public class ListCategoryController : ControllerBase
 {
     private readonly AddCategoryHandler _handler;
+
     public ListCategoryController(AddCategoryHandler handler)
-        => _handler = handler;
+    {
+        _handler = handler;
+    }
 
     [HttpPost]
     public async Task<IActionResult> Post(AddCategoryRequest request)

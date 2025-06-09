@@ -1,31 +1,30 @@
 ﻿namespace RestCatalogService.WebApi.Domain;
 
-public class Category
+public class Item
 {
-    public Guid Id { get; private set; }
-    public string Name { get; private set; }
+    public Guid Id { get; }
+    public string Name { get; }
     public IList<ItemCategory> ItemCategories { get; private set; }
 
-    public Category(string name) : this(Guid.NewGuid(), name)
+    public Item(string name, IList<Guid> categoriesIds) : this(Guid.NewGuid(), name, categoriesIds)
     {
     }
 
-    public Category(Guid id, string name)
+    public Item(Guid id, string name, IList<Guid> categoriesIds)
     {
         ValidateName(name);
-
         Name = name;
+
+        if (categoriesIds.Count() == 0)
+        {
+            throw new ArgumentException("Must have at least one category", nameof(categoriesIds));
+        }
+
+        ItemCategories = categoriesIds.Select(cid => new ItemCategory { ItemId = id, CategoryId = cid }).ToList();
         Id = id;
     }
 
-    private Category() { }
-
-    public void UpdateName(string name)
-    {
-        ValidateName(name);
-
-        Name = name;
-    }
+    private Item() { }
 
     private void ValidateName(string name)
     {

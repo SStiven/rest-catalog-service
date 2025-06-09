@@ -7,15 +7,11 @@ public static class CategorySeeder
 {
     public static void SeedDefaultCategories(this ModelBuilder modelBuilder)
     {
-        var category1 = new Category(Guid.Parse("11111111-1111-1111-1111-111111111111"), "Category 1");
-        var category2 = new Category(Guid.Parse("11111111-1111-1111-1111-111111111112"), "Category 2");
-        var category3 = new Category(Guid.Parse("11111111-1111-1111-1111-111111111113"), "Category 3");
-
         modelBuilder.Entity<Category>()
             .HasData(
-                category1,
-                category2,
-                category3
+                new { Id = Guid.Parse("11111111-1111-1111-1111-111111111111"), Name = "Category 1" },
+                new { Id = Guid.Parse("11111111-1111-1111-1111-111111111112"), Name = "Category 2" },
+                new { Id = Guid.Parse("11111111-1111-1111-1111-111111111113"), Name = "Category 3" }
             );
     }
 }
