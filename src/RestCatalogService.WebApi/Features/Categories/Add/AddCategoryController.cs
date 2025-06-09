@@ -4,10 +4,10 @@ namespace RestCatalogService.WebApi.Features.Categories.Add;
 
 [ApiController]
 [Route("api/categories")]
-public class AddCategoryController : ControllerBase
+public class ListCategoryController : ControllerBase
 {
     private readonly AddCategoryHandler _handler;
-    public AddCategoryController(AddCategoryHandler handler)
+    public ListCategoryController(AddCategoryHandler handler)
         => _handler = handler;
 
     [HttpPost]

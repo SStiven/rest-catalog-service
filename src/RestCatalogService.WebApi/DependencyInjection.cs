@@ -1,6 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using RestCatalogService.WebApi.Domain.Interfaces;
 using RestCatalogService.WebApi.Features.Categories.Add;
+using RestCatalogService.WebApi.Features.Categories.List;
 using RestCatalogService.WebApi.Persistence.EntityFrameworkCore.Categories;
 using RestCatalogService.WebApi.Persistence.EntityFrameworkCore.Common;
 
@@ -24,6 +25,7 @@ public static class DependencyInjection
         }
 
         services.AddScoped<AddCategoryHandler>();
+        services.AddScoped<ListCategoriesHandler>();
 
         return services;
     }

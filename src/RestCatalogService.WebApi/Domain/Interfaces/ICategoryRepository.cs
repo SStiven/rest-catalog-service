@@ -3,4 +3,5 @@
 public interface ICategoryRepository
 {
     Task AddAsync(Category category);
+    Task<IReadOnlyList<Category>> ListAsync();
 }

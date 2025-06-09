@@ -1,4 +1,5 @@
-﻿using RestCatalogService.WebApi.Domain;
+﻿using Microsoft.EntityFrameworkCore;
+using RestCatalogService.WebApi.Domain;
 using RestCatalogService.WebApi.Domain.Interfaces;
 using RestCatalogService.WebApi.Persistence.EntityFrameworkCore.Common;
 
@@ -17,5 +18,14 @@ public class SqlServerCategoryRepository : ICategoryRepository
     {
         _context.Categories.Add(category);
         await _context.SaveChangesAsync();
+    }
+
+    public async Task<IReadOnlyList<Category>> ListAsync()
+    {
+        var categories = await _context
+            .Categories
+            .AsNoTracking()
+            .ToListAsync();
+        return categories;
     }
 }
