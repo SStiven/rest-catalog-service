@@ -1,0 +1,12 @@
+@RestCatalogService.WebApi_HostAddress = http://localhost:5138
+
+###  
+# Update an existing category
+
+PUT {{RestCatalogService.WebApi_HostAddress}}/api/categories/11111111-1111-1111-1111-111111111111
+Content-Type: application/json
+Accept: application/json
+
+{
+  "name": "My New Name"
+}

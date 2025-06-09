@@ -28,4 +28,20 @@ public class SqlServerCategoryRepository : ICategoryRepository
             .ToListAsync();
         return categories;
     }
+
+    public async Task<Category?> FindByIdAsync(Guid id)
+    {
+        var maybeCategory = await _context
+            .Categories
+            .AsNoTracking()
+            .FirstOrDefaultAsync(c => c.Id == id);
+
+        return maybeCategory;
+    }
+
+    public Task UpdateAsync(Category category)
+    {
+        _context.Categories.Update(category);
+        return Task.CompletedTask;
+    }
 }
