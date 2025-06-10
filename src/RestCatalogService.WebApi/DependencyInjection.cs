@@ -4,6 +4,7 @@ using RestCatalogService.WebApi.Features.Categories.Add;
 using RestCatalogService.WebApi.Features.Categories.List;
 using RestCatalogService.WebApi.Features.Categories.Update;
 using RestCatalogService.WebApi.Features.Items.Add;
+using RestCatalogService.WebApi.Features.Items.List;
 using RestCatalogService.WebApi.Persistence.EntityFrameworkCore.Categories;
 using RestCatalogService.WebApi.Persistence.EntityFrameworkCore.Common;
 using RestCatalogService.WebApi.Persistence.EntityFrameworkCore.Items;
@@ -33,6 +34,7 @@ public static class DependencyInjection
         services.AddTransient<UpdateCategoryHandler>();
 
         services.AddTransient<AddItemHandler>();
+        services.AddTransient<ListItemsHandler>();
 
         return services;
     }

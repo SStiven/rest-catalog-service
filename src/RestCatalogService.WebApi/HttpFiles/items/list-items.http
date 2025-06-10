@@ -1,0 +1,9 @@
+@RestCatalogService.WebApi_HostAddress = http://localhost:5138
+
+###  
+# Add a new Item
+
+GET {{RestCatalogService.WebApi_HostAddress}}/api/items
+Content-Type: application/json
+Accept: application/json
+
