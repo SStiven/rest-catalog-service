@@ -1,8 +1,10 @@
-﻿namespace RestCatalogService.WebApi.Domain.Interfaces;
+﻿using RestCatalogService.WebApi.Features.Items.List;
+
+namespace RestCatalogService.WebApi.Domain.Interfaces;
 
 public interface IItemRepository
 {
     Task AddAsync(Item item);
 
-    Task<IList<Item>> ListAsync();
+    Task<List<Item>> ListAsync(ISpecification<Item> specification, int page, int size);
 }

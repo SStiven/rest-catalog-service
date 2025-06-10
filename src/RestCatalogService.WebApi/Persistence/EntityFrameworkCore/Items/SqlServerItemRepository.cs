@@ -1,6 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using RestCatalogService.WebApi.Domain;
 using RestCatalogService.WebApi.Domain.Interfaces;
+using RestCatalogService.WebApi.Features.Items.List;
 using RestCatalogService.WebApi.Persistence.EntityFrameworkCore.Common;
 
 namespace RestCatalogService.WebApi.Persistence.EntityFrameworkCore.Items;
@@ -20,12 +21,15 @@ public class SqlServerItemRepository : IItemRepository
         await _context.SaveChangesAsync();
     }
 
-    public async Task<IList<Item>> ListAsync()
+    public async Task<List<Item>> ListAsync(ISpecification<Item> specification, int page, int size)
     {
         var items = await _context
             .Items
             .Include(i => i.ItemCategories)
             .ThenInclude(ic => ic.Category)
+            .Where(specification.Criteria)
+            .Skip((page - 1) * size)
+            .Take(size)
             .AsNoTracking()
             .ToListAsync();
 
