@@ -2,6 +2,7 @@
 using RestCatalogService.WebApi.Domain;
 using RestCatalogService.WebApi.Domain.Interfaces;
 using RestCatalogService.WebApi.Persistence.EntityFrameworkCore.Common;
+using System.Threading.Tasks;
 
 namespace RestCatalogService.WebApi.Persistence.EntityFrameworkCore.Categories;
 
@@ -43,5 +44,16 @@ public class SqlServerCategoryRepository : ICategoryRepository
     {
         _context.Categories.Update(category);
         return Task.CompletedTask;
+    }
+
+    public async Task<bool> AreAllPresentAsync(IList<Guid> categoriesIds)
+    {
+        var categoriesCount = await _context
+            .Categories
+            .AsNoTracking()
+            .Where(c => categoriesIds.Contains(c.Id))
+            .CountAsync();
+
+        return categoriesIds.Count == categoriesCount;
     }
 }

@@ -6,4 +6,5 @@ public interface ICategoryRepository
     Task<IReadOnlyList<Category>> ListAsync();
     Task<Category?> FindByIdAsync(Guid id);
     Task UpdateAsync(Category category);
+    Task<bool> AreAllPresentAsync(IList<Guid> categoriesIds);
 }

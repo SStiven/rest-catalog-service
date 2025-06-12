@@ -11,4 +11,6 @@ public interface IItemRepository
     Task<Item?> FindByIdAsync(Guid id);
 
     Task DeleteAsync(Item item);
+
+    Task UpdateAsync(Item item);
 }

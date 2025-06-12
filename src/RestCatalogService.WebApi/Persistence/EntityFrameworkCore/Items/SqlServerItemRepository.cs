@@ -46,4 +46,10 @@ public class SqlServerItemRepository : IItemRepository
 
         return items;
     }
+
+    public async Task UpdateAsync(Item item)
+    {
+        _context.Update(item);
+        await _context.SaveChangesAsync();
+    }
 }

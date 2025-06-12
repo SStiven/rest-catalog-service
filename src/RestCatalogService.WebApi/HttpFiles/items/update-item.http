@@ -1,0 +1,16 @@
+@RestCatalogService.WebApi_HostAddress = http://localhost:5138
+
+###  
+# Update an Item
+
+PUT {{RestCatalogService.WebApi_HostAddress}}/api/items/B87E4C7F-1A29-4EA3-9FFD-3402F37B7C8A
+Content-Type: application/json
+Accept: application/json
+
+{
+  "name": "My New Item Name",
+  "categoryIds": [
+    "11111111-1111-1111-1111-111111111112",
+    "11111111-1111-1111-1111-111111111112"
+  ]
+}
