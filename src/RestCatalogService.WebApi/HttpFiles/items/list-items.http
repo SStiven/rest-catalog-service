@@ -17,9 +17,9 @@ Accept: application/json
 
 ###  
 # List items with category id = 11111111-1111-1111-1111-111111111112
-# size = 3
+# size = 2
 # page = 1
 
-GET {{RestCatalogService.WebApi_HostAddress}}/api/items?categoryId=11111111-1111-1111-1111-111111111112&page=1&size=3
+GET {{RestCatalogService.WebApi_HostAddress}}/api/items?categoryId=11111111-1111-1111-1111-111111111112&page=1&size=2
 Content-Type: application/json
 Accept: application/json

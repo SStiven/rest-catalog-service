@@ -21,6 +21,17 @@ public class SqlServerItemRepository : IItemRepository
         await _context.SaveChangesAsync();
     }
 
+    public async Task DeleteAsync(Item item)
+    {
+        _context.Items.Remove(item);
+        await _context.SaveChangesAsync();
+    }
+
+    public async Task<Item?> FindByIdAsync(Guid id)
+    {
+        return await _context.Items.FirstOrDefaultAsync(x => x.Id == id);
+    }
+
     public async Task<List<Item>> ListAsync(ISpecification<Item> specification, int page, int size)
     {
         var items = await _context

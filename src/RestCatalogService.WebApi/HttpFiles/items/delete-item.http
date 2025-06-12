@@ -1,0 +1,8 @@
+@RestCatalogService.WebApi_HostAddress = http://localhost:5138
+
+###  
+# Delete an Item
+
+DELETE {{RestCatalogService.WebApi_HostAddress}}/api/items/B6690EB6-C1DA-4FA7-8925-0422DBAE4ACA
+Content-Type: application/json
+Accept: application/json
